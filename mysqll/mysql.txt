@@ -1,0 +1,214 @@
+CREATE DATABASE :-
+******************
+     The CREATE DATABASE statement is used to create a database in MySQL.
+
+   ===>     CREATE DATABASE databaseName
+
+
+
+
+*********************************************************************************************************************************************
+
+
+
+CREATE TABLE :-
+******************
+   A database table has its own unique name and consists of columns and rows.
+
+
+   CREATE TABLE tableName(
+    id int,
+    fname varchar(50),
+    lname varchar(50),
+    dob DATE,
+   )
+
+
+
+*********************************************************************************************************************************************
+INSERT SINGLE DATA INTO TABLE:-
+************************
+
+The SQL query must be quoted in PHP
+String values inside the SQL query must be quoted
+Numeric values must not be quoted
+The word NULL must not be quoted
+The INSERT INTO statement is used to add new records to a MySQL table:
+
+
+INSERT INTO table_name (column1, column2, column3,...)
+VALUES (value1, value2, value3,...)
+
+            (OR)
+
+INSERT INTO std_info (id, firstname, lastname, email,birth_dat)
+VALUES (2,'abhi', 'Sharma', 'abhi@gmail.com',"2001-07-25")
+
+
+*********************************************************************************************************************************************
+
+INSERT MULTIPLE DATA INTO TABLE:-
+************************
+
+
+
+
+INSERT INTO table_name (column1, column2, column3,...)
+VALUES 
+(value1, value2, value3,...),
+(value1, value2, value3,...),
+(value1, value2, value3,...),
+
+            (OR)
+
+INSERT INTO std_info (id, firstname, lastname, email,birth_dat)
+VALUES 
+(3,'manav', 'yadav', 'm@gmail.com',"1998-03-5"),
+(4,'ram', 'lal', 'r@gmail.com',"2004-08-6"),
+(5,'shyam', 'laal', 's@gmail.com',"2000-03-5"),
+(6,'tony', 'shaolo', 'ts@gmail.com',"1998-11-7")
+
+
+*********************************************************************************************************************************************
+
+
+constraints:-
+*************
+  List of constraints in MySQL:-
+  -------------------------------
+                           NOT NULL
+                           UNIQUE
+                           DEFAULT 
+                           CHECK
+                           FOREIGN KEY
+                           PRIMARY KEY
+
+
+
+*********************************************************************************************************************************************
+
+
+PHP MySQL Select Data :-
+***********************************
+
+
+select statement is used to select data feom 1 or more than 1 table.
+
+SELECT column_name(s) FROM table_name
+
+OR
+
+SELECT id, name, email from student
+
+
+
+
+
+or we can use the * character to select ALL columns from a table:
+
+
+SELECT * FROM table_name
+
+OR
+
+SELECT * from student
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+PHP MySQL Use The WHERE Clause:-
+*******************************
+
+WHERE Clause is used to filter the records.
+
+WHERE Clause is used to extract only those records that fulfill the specified condition.
+
+
+
+*******
+
+   ====>   SELECT column_name(s) FROM table_name WHERE column_name operator value 
+
+                     (OR)
+
+  ====>   select id, name, age, phone from std_info where age=20
+
+  ====>   select * from std_info where age >= 20 and gender="M";
+
+     we can use IN operator to solve the  of code
+
+ ====>    select * from std_info where age  in (20,21);
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+PHP MySQL Use The ORDER BY Clause:-
+***********************************
+   ORDER BY Clause is used to sort the result-set in ascending or descending order.
+
+   ORDER BY Clause sort the record in ascending order by default. To sort the record in descending order ,use the DESC keyword.
+
+
+***********
+   SELECT column_name(s) FROM table_name ORDER BY column_name(s) ASC|DESC 
+                     
+                     (OR)
+
+   select * from std_info order by name
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+PHP MySQL Delete Data:-
+*************************
+
+The DELETE statement is used to delete records from a table:
+
+DELETE FROM table_name WHERE some_column = some_value
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+PHP MySQL Update Data:-
+***********************
+
+The UPDATE statement is used to update existing records in a table:
+
+UPDATE table_name SET column1=value, column2=value2,...
+WHERE some_column=some_value
+
+
+
+=======>  UPDATE std_info SET id='1',name='abhi',age='24' WHERE id=1;
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+PHP MySQL Limit Data Selections:-
+*********************************
+
+MySQL provide LIMIT Clause that is used to specify the number of record to return.
+
+
+ we wish to select all records from 1 - 30 (inclusive) from a table called "std_info". The SQL query would then look like this: 
+
+
+SELECT * FROM std_info LIMIT 30;
+
+
+
+what if we want to show data from antywhere like from (15-23)
+
+SELECT * FROM std_info LIMIT 8 OFFSET 15";
+
+
+                     (OR)
+
+SELECT * FROM std_info LIMIT 8, 15";
+
+----------------------------------------------------------------------------------------------------------------------------------------------------

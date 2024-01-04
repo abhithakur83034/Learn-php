@@ -1,0 +1,358 @@
+what is oop?
+  op stand for object oriented programming.
+
+  Procedural programming is about writing procedures or functions that perform operations on the data, 
+     while object-oriented programming is about creating objects that contain both data and functions.
+
+Object-oriented programming has several advantages over procedural programming:
+
+OOP is faster and easier to execute
+OOP provides a clear structure for the programs
+OOP helps to keep the PHP code DRY "Don't Repeat Yourself", and makes the code easier to maintain, modify and debug
+OOP makes it possible to create full reusable applications with less code and shorter development time.
+
+
+Tip: The "Don't Repeat Yourself" (DRY) principle is about reducing the repetition of code. You should extract out the codes
+   that are common for the application, 
+    and place them at a single place and reuse them instead of repeating it.
+
+*********************************************************************************************************************************************
+
+    1. CLASS : A class is a template for object.
+       Object :  object is an instance of class.
+
+===================================================================
+
+
+    DEFINE A CLASS
+    **************
+        class is defined by using class keyword, followed by the name of the class and a pair of {} . 
+
+        <?PHP
+            class calculation{
+                 public $a, $b, $c;                  -------> this is properties
+
+                 function sum(){                       (method-1)     all functions are methods
+                    $this->c = $this->a + $this->b;
+                    return $this->c;
+                 }
+                 function sub(){                          (method-2)     all functions are methods
+                    $this->c = $this->a - $this->b;
+                    return $this->c;
+                 }
+            }
+        ?>
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+PHP - The __construct Function :-
+*********************************
+A constructor allows you to initialize an object's properties upon creation of the object.
+
+If you create a __construct() function, PHP will automatically call this function when you create an object from a class.
+
+Notice that the construct function starts with two underscores (__)!
+
+                                   <?php
+                                    class Fruit {
+                                    public $name;
+                                    public $color;
+
+                                    function __construct($name) {
+                                       $this->name = $name;
+                                    }
+                                    function get_name() {
+                                       return $this->name;
+                                    }
+                                    }
+
+                                    $apple = new Fruit("Apple");
+                                    echo $apple->get_name();
+                                    ?>
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+                                    
+PHP - The __destruct Function:-
+********************************
+
+A destructor is called when the object is destructed or the script is stopped or exited.
+
+If you create a __destruct() function, PHP will automatically call this function at the end of the script.
+
+Notice that the destruct function starts with two underscores (__)!
+
+
+
+                                    <?php
+                                    class Fruit {
+                                    public $name;
+                                    public $color;
+
+                                    function __construct($name) {
+                                       $this->name = $name;
+                                    }
+                                    function __destruct() {
+                                       echo "The fruit is {$this->name}.";
+                                    }
+                                    }
+
+                                    $apple = new Fruit("Apple");
+                                    ?>
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+PHP - Access Modifiers:-
+***********************
+ Properties and methods can have access modifiers which control where they can be accessed.
+
+There are three access modifiers:
+
+         public - the property or method can be accessed from everywhere. This is default
+         protected - the property or method can be accessed within the class and by classes derived from that class
+         private - the property or method can ONLY be accessed within the class                                   
+
+                                    <?php
+                                    class Fruit {
+                                    public $name;
+                                    protected $color;
+                                    private $weight;
+                                    }
+
+                                    $mango = new Fruit();
+                                    echo $mango->name = 'Mango'; // OK
+                                    echo  $mango->color = 'Yellow'; // ERROR
+                                    echo  $mango->weight = '300'; // ERROR
+                                    ?>
+-----------------------------------------------------------------------------------------------------------------------------------------------         
+
+PHP - Class Constants:-
+************************
+Class constants can be useful if you need to define some constant data within a class.
+
+A class constant is declared inside a class with the const keyword.
+
+A constant cannot be changed once it is declared.
+
+Class constants are case-sensitive. However, it is recommended to name the constants in all uppercase letters.         
+
+                                                   <?php
+                                                class Goodbye {
+                                                const LEAVING_MESSAGE = "Thank you for visiting W3Schools.com!";
+                                                }
+
+                                                echo Goodbye::LEAVING_MESSAGE;
+                                                ?>
+
+
+ we can access a constant from inside the class by using the self keyword followed by the scope resolution
+  operator (::) followed by the constant name                                               
+
+
+
+                                       <?php
+                                       class Goodbye {
+                                       const LEAVING_MESSAGE = "Thank you for visiting W3Schools.com!";
+                                       public function byebye() {
+                                          echo self::LEAVING_MESSAGE;
+                                       }
+                                       }
+
+                                       $goodbye = new Goodbye();
+                                       $goodbye->byebye();
+                                       ?>
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+ PHP -Abstract Classes and Methods:-
+ **********************************
+ if we want to make any class to abstract class then we simply write abstract before the class.
+ 
+              abstract class A{
+
+              }
+  
+
+   An abstract class is a class that contains at least one abstract method.
+    An abstract method is a method that is declared,
+     but not implemented in the code.                                     
+
+
+                              <?php
+                                 abstract class ParentClass {
+                                 abstract public function someMethod1();
+                                 abstract public function someMethod2($name, $color);
+                                 abstract public function someMethod3() : string;
+                                 }
+                                 ?>
+
+
+when we inherit functions/methods from abstract class (parent) to (child)  methods name should be same
+                                             <?php
+                                             // Parent class
+                                             abstract class Car {
+                                                            public $name;
+                                                            public function __construct($name) {
+                                                               $this->name = $name;
+                                             }
+                                                     abstract public function intro() : string;
+                                             }
+
+                                             // Child classes
+                                             class Audi extends Car {
+                                                      public function intro() : string {
+                                                         return "Choose German quality! I'm an $this->name!";
+                                             }
+                                             }
+                                             }
+
+                                             // Create objects from the child classes
+                                             $audi = new audi("Audi");
+                                             echo $audi->intro();
+                                             echo "<br>";
+                                             ?>
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+PHP - What are Interfaces:-
+*****************************
+
+  if we want to use multiple class in a single class then we use Interface.
+
+  we can't make any object of Interface.
+
+                                       <?php
+
+                                       interface Parent1{
+                                          function add($A,$b);
+                                       }
+                                       interface Parent2{
+                                          function sub($A,$b);
+                                       }
+                                       interface Parent3{
+                                          function mul($A,$b);
+                                       }
+                                       interface Parent4{
+                                          function div($A,$b);
+                                       }
+
+
+                                       class ClildClass implements Parent1,Parent2,Parent3,Parent4{
+                                       function add($a , $b){
+                                          echo "Add of Two Num id : ".$a + $b ."<br>";
+                                       }
+                                       function sub($a , $b){
+                                          echo "Sub of Two Num id : ".$a - $b ."<br>";
+                                       }
+                                       function mul($a , $b){
+                                          echo "Mul of Two Num id : ".$a * $b ."<br>";
+                                       }
+                                       function div($a , $b){
+                                          echo "Div of Two Num id : ".$a/$b ."<br>";
+                                       }
+                                       }
+
+                                       $P = new ClildClass;
+                                       $P->add(20,12);
+                                       $P->sub(20,12);
+                                       $P->mul(20,12);
+                                       $P->div(20,12);
+
+                                       ?>
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+PHP - What are Traits:-
+************************
+
+if we want to call same function inside many class then we make trait and use it wherever we want.
+
+<?php
+trait Cl1{
+   function helo(){
+      echo "Hello from trait";
+   }
+}
+
+class a{
+   use Cl1;
+}
+
+class b{
+   use Cl1;
+}
+
+class c{
+   use Cl1;
+}
+
+$A = new a();
+$A->helo();
+?>
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+PHP - Static Methods:-
+***********************
+
+Static methods are declared with the static keyword:
+
+static method can be called directly without creating an instance of  parent  class;
+
+
+<?php
+class Helo{
+   static function heloo(){
+      echo "Welcome To The world Of Static Method";
+   }
+}
+Helo::heloo();
+?>
+
+
+<?php
+class A{
+   static function test1(){
+      echo "Welcome To The world Of Static Method <br>";
+   }
+}
+class B{
+   static function test2(){
+      A::test1();
+   }
+}
+
+$obj = new B;
+$obj->test2();
+?>
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+PHP - Static Properties:-
+**************************
+
+Static methods are declared with the static keyword:
+
+static method can be called directly without creating an instance of  parent  class;
+
+
+<?php
+class ParentClass{
+   static $value="Hello from static properties";
+}
+echo ParentClass::$value;
+?>
+  
+
+
+
+
+
+
+
+
+
