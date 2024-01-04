@@ -13,7 +13,7 @@
       $servernme = "localhost";
       $username ="root";
       $password = "";
-      $dbname = "student";
+      $dbname = "school";
 
       $conn = mysqli_connect($servernme,$username,$password,$dbname);
       if($conn->connect_error){
@@ -28,7 +28,7 @@
         // echo print_r($_POST);
         // echo "</pre>";
 
-        $table = "CREATE TABLE students(
+        $table = "CREATE TABLE IF NOT EXISTS  students(
             id INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             name VARCHAR(30) NOT NULL,
             email VARCHAR(30) NOT NULL,
@@ -38,6 +38,9 @@
 
       if($conn->query($table) === TRUE){
         echo "Table Created Successfully";
+        echo "<br>";
+      }else {
+        echo "Table Already Created ";
         echo "<br>";
       }
       

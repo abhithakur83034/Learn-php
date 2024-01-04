@@ -16,7 +16,7 @@
       $servernme = "localhost";
       $username ="root";
       $password = "";
-      $dbname = "student";
+      $dbname = "school";
 
       $conn = mysqli_connect($servernme,$username,$password,$dbname);
       if($conn->connect_error){

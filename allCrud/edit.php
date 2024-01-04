@@ -13,7 +13,7 @@
     $servernme = "localhost";
     $username ="root";
     $password = "";
-    $dbname = "student";
+    $dbname = "school";
 
     $conn = mysqli_connect($servernme,$username,$password,$dbname);
     if($conn->connect_error){
@@ -40,7 +40,8 @@
         ?>
 
 
-<form action=" <?php echo $_SERVER['PHP_SELF'] ?> " method="post" >
+<form action="updatedata.php" method="post" >
+     <p> <input type="hidden" name="id" value=<?php echo $row["id"];?> > </p>
      <p> <input type="text" name="name" value=<?php echo $row["name"];?> > </p>
      <p> <input type="email" name="email" value=<?php echo $row["email"];?>> </p>
      <p> <input type="number" name="mobile" value=<?php echo $row["mobile"];?>> </p>
